@@ -23,5 +23,5 @@
 
 * [View Code On GitHub](https://github.com/joelbutcher/socialstream)
 * [About Me](https://github.com/joelbutcher)
-* [Contribute](https://github.com/joelbutcher/socialstream/blob/3.x/CONTRIBUTING.md)
+* [Contribute](https://github.com/joelbutcher/socialstream/blob/3.x/.github/CONTRIBUTING.md)
 * [Donate](https://ko-fi.com/joelbutcher)
