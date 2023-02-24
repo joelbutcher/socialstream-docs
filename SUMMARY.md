@@ -14,6 +14,7 @@
 ## 🚀 Features
 
 * [Remember Session](features/remember-session.md)
+* [Refresh Expired Tokens](features/refresh-expired-tokens.md)
 * [Provider Avatars](features/provider-avatars.md)
 * [Missing Emails](features/missing-emails.md)
 * [Login on Registration](features/login-on-registration.md)
