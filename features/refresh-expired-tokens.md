@@ -3,7 +3,7 @@
 As of Socialstream v4.1.0, socialstream will now automatically check and refresh expired access tokens when they're retrieved from the database. To do this, socialstream uses the `client_id` and `client_secret` values stored in your applications services.php config file.
 
 {% hint style="warning" %}
-This may slow down your application depending on request times to the providers OAuth server.
+This may slow down your application depending on any delays in the request to the providers OAuth server.
 {% endhint %}
 
 This feature is enabled by default, to disable this feature, simply remove it from the `features` array inside your `socialstream.php` config file:
