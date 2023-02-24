@@ -8,6 +8,7 @@
 * [Configuration](getting-started/configuration.md)
 * [Routing](getting-started/routing.md)
 * [Customising Socialite](getting-started/customising-socialite.md)
+* [Overriding the Callback Logic](getting-started/overriding-the-callback-logic.md)
 * [Socialite Providers](getting-started/socialite-providers.md)
 * [Laravel Passport](getting-started/laravel-passport.md)
 
