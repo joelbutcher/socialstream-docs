@@ -17,10 +17,10 @@ return [
 ];
 ```
 
-You may wish to customise the logic behind refreshing an expired token, to do this, you can provide a closure to the `Socialstream::refreshesProviderTokenWith()` method from within the `boot` method of your applications `AppServiceProvider`. For example, for GitHub, this would look like the following:
+You may wish to customise the logic behind refreshing an expired token, to do this, you can provide a closure to the `Socialstream::refreshesTokensForProviderUsing()` method from within the `boot` method of your applications `AppServiceProvider`. For example, for GitHub, this would look like the following:
 
 ```php
-Socialstream::refreshesProviderTokenWith('github', function (ConnectedAccount $account) {
+Socialstream::refreshesTokensForProviderUsing('github', function (ConnectedAccount $account) {
     $response = Http::asForm()->post(...);
 
     return new RefreshedCredentials(
@@ -40,10 +40,10 @@ namespace App\RefreshTokenProviders;
 
 use GuzzleHttp\RequestOptions;
 use JoelButcher\Socialstream\Concerns\RefreshesOauth2Tokens;
-use JoelButcher\Socialstream\Contracts\RefreshTokenProvider;
+use JoelButcher\Socialstream\Contracts\Oauth2RefreshResolver;
 use SocialiteProviders\Reddit\Provider as RedditProvider;
 
-class RedditOauth2RefreshResolver extends RedditProvider implements RefreshTokenProvider
+class RedditOauth2RefreshResolver extends RedditProvider implements Oauth2RefreshResolver
 {
     use RefreshesOauth2Tokens;
 
@@ -66,5 +66,5 @@ class RedditOauth2RefreshResolver extends RedditProvider implements RefreshToken
 You would then add the following to the `boot` method of your applications `AppServiceProvider`:
 
 ```php
-Socialstream::refreshesProviderTokenWith('reddit', RedditOauth2RefreshResolver::class);
+Socialstream::refreshesTokensForProviderUsing('reddit', RedditOauth2RefreshResolver::class);
 ```
