@@ -9,7 +9,6 @@
 * [Routing](getting-started/routing.md)
 * [Customising Socialite](getting-started/customising-socialite.md)
 * [Overriding the Callback Logic](getting-started/overriding-the-callback-logic.md)
-* [Socialite Providers](getting-started/socialite-providers.md)
 * [Laravel Passport](getting-started/laravel-passport.md)
 
 ## 🚀 Features
@@ -20,6 +19,10 @@
 * [Missing Emails](features/missing-emails.md)
 * [Login on Registration](features/login-on-registration.md)
 * [Register from Login](features/register-from-login.md)
+
+## 🧾 guides
+
+* [Socialite Providers](guides/socialite-providers.md)
 
 ## 🔗 Links
 

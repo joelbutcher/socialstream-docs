@@ -8,7 +8,7 @@ Like Laravel Jetstream, Socialstream should only be used within new Laravel appl
 
 ## Installing Socialstream
 
-To get started using Socialstream in your application, you should use Composer:
+To get started using Socialstream in your application, you should `composer require` the package into a **new** Laravel project:
 
 ```
 composer require joelbutcher/socialstream
