@@ -58,7 +58,11 @@ Inside your applications `socialstream.php` config file, you will want to add th
 'providers' => [
     \JoelButcher\Socialstream\Providers::github(),
     \JoelButcher\Socialstream\Providers::google(),
-    'apple',
+    [
+        'id' => 'apple',
+        'name' => 'Apple',
+        'label' => 'Sign in with Apple',
+    ],
 ],
 ```
 
@@ -79,7 +83,7 @@ When using Socialstream alongside Socialite Providers, you will need **both** se
 ];
 ```
 
-### Database Changes – \`token\`&#x20;
+### Database Changes – `token`
 
 {% hint style="danger" %}
 Some providers will not return a token in the callback response. As such, you will need to modify the `connected_accounts` table migration to make the `token` field nullable:

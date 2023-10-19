@@ -1,11 +1,9 @@
----
-description: Easily integrate Laravel Socialite into your Laravel Jetstream application.
----
+# Release Notes
 
-# Socialstream
+## Versioning Scheme
 
-![Social image courtesy of BeyondCode](https://repository-images.githubusercontent.com/323695919/4944bd00-482a-11eb-990e-7b72beae4e64)
+Socialstream follows [Semantic Versioning](https://semver.org/). We try to keep breaking changes to a minimum. However, major releases may contain breaking change, or in some circumstance, rewrite entire parts of the packages inner-workings. Miner and patch releases should **never** contain breaking changes.
 
-Socialstream combines the beauty of [Laravel Jetstream](https://jetstream.laravel.com/2.x/introduction.html) with the simplicty of [Laravel Socialite](https://laravel.com/docs/9.x/socialite) to give developers a convenient way to integrate authentication with OAuth providers.
+## PHP
 
-Because Socialstream relies on Laravel Socialite, it currently only supports the providers Socialite support. These are: Facebook, Twitter, LinkedIn, Google, GitHub, GitLab, and Bitbucket.
+Socialstream follows the minimum required Laravel PHP version. At its release, Socialstream 5.x requires a minimum PHP version of 8.1.

@@ -1,56 +1,76 @@
 # Configuration
 
+After installing Socialstream, the primary configuration file will be located at `config/socialstream.php`. This configuration file allows you to configure the middleware Socialstream's routes sit behind, the prompt used to divide socialstream from the other authentication components on the `login` and `registration` panels, as well as the providers and features that are enabled.
 
+## Middleware
 
-## Configuring Socialstream
+By default, Socialstream uses the `web` middleware. For most applications, this should be the only middleware required for Socialstream's routes. However, you are free to change this to suit your applications needs.
 
-On installation, Socialstream will publish a new `socialstream.php` configuration file. This config file can be found in your applications `config` directory:
+## Prompt
 
-```
-~/Sites/blog/config/socialstream.php
-```
+The prompt is the text between the "Login" or "Registration" forms and Socialstreams OAuth buttons, this is set to `Or Login Via` by default. You are free to change this as you see fit.
 
-Inside this configuration file you may define the application middleware Socialstreams authentication routes exist behind and specify which Socialite Providers you wish to enable in your application.
+## Providers
 
-{% hint style="success" %}
-You may also enable various Socialstream features inside this config file, such as the remember sessions, provider avatars and generating missing emails. You can find out more by navigating to each feature using the navigation to the left of this page.
-{% endhint %}
+No providers are enabled by default (and thus the Socialstream section of the "Login" and "Registration" views is not rendered. However, you are free to enable as many providers as you wish.&#x20;
 
-### Middleware
+### Adding Providers
 
-By default only the `web` middleware route is needed. This should suffice for the majority of use-cases, but if you find yourself needing to add specific middleware logic to the exposed routes (such as headers, rate limiting etc.), you may do so by first defining the middleware in your applications Http Kernel, then adding it here.
+Socialstream natively only ships with support for the providers offered by [Laravel Socialite](https://laravel.com/docs/10.x/socialite). If you wish to add a provider, you may do so one of three ways:
 
-### Providers
+#### Via the \`Providers\` static class
 
-The `providers` config option allows you to specify the OAuth providers your Socialstream application should support. These will be the providers your users use to authenticate with your application. By default, the `github` provider is enabled, but you are free to add and remove as many providers as your application requires.&#x20;
-
-To enable a provider, simply add the name of the provider as a string (e.g. `google`) to the `providers` array. Alternatively, you may use the static methods available for each provider within the `JoelButcher\Socialstream\Providers` class:
-
-```
-JoelButcher\Socialstream\Providers:google();
-```
-
-{% hint style="info" %}
-#### Twitter OAuth 2.0
-
-Since [v5.4.0](https://github.com/laravel/socialite/releases/tag/v5.4.0), Laravel Socialte supports both Twitter OAuth 1.0 and OAuth 2.0. To enable support for the OAuth 2.0 version of the Twitter provider, simply add the `Providers::twitterOAuth2()` method to the `providers` array in your config file. Alternatively you may add `twitter-oauth-2` as the string variant.
-{% endhint %}
-
-#### Configuring a Provider
-
-Once you have specified a provider in your `socialstream.php` config file, you will need to add that provider to your `services.php` config file and provide a `client_id`, `client_secret` and `redirect` value for each provider you are supporting. For example, if you wish to suppor the GitHub provider, you should add the following to your `services.php` config file:
+Socialstream ships with a `Providers` class, with static methods for each of Socialites supported providers. This class is imported in the default configuration file, and may be called like so:
 
 ```php
-'github' => [
-    'client_id' => env('{PROVIDER}_CLIENT_ID'),
-    'client_secret' => env('{PROVIDER}_CLIENT_SECRET'),
-    'redirect' => 'https://my-app.com/oauth/{provider}/callback',
+'providers' => [
+    Providers::github(),
 ],
 ```
 
-{% hint style="warning" %}
-#### Twitter
+#### As a string
 
-There is currently a [known bug in Laravel Socialite](https://github.com/laravel/socialite/issues/604) that doesn't allow you to define separate configs for both Twitter OAuth 1.0 and Twitter OAuth 2.0.&#x20;
+You may simply pass a string into the `providers` array within Socialstream's configuration file to add a provider.
+
+{% hint style="warning" %}
+Please note that the string value must also match the value of a service in your applications `services.php` configuration file as this is what is used to retrieve a providers credentials.
 {% endhint %}
 
+#### As an array
+
+Additional providers may be added as an array:
+
+```php
+'providers' => [
+    [
+        'id' => 'github',
+        'name' => 'GitHub',
+    ],
+]
+```
+
+The `id` property is the valid passed to Socialite when calling `Socialite::provider(...)` . This is then used by Socialite to resolve the OAuth credentials from your applications `config/services.php` file.
+
+The `name` property is used in the "Connect Accounts" panel when rendering what providers are (or aren't) connected to your profile.
+
+### Button Labels
+
+As of v5, Socialstream now ships with the ability to define the button labels rendered in the "Login" and "Registration" buttions:
+
+```php
+// Via 'Providers' helper
+Providers::github(label: 'Continue with GitHub'),
+
+// Via array
+[
+    'id' => 'github',
+    'name' => 'GitHub',
+    'buttonLabel' => 'Continue with GitHub',
+],
+```
+
+If a button label is not specified, Socialstream will fall back to the `name` property. If you have passed just a string, Socialstream will format the ID in a human readable way and render that as the button label instead.
+
+## Features
+
+You may specify which of Socialstream's features are enabled here, such as the profile avatar feature. Available feature options can be found in this sites navigation.
