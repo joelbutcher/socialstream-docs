@@ -1,6 +1,6 @@
 # Table of contents
 
-## Prologue
+## ⏮ Prologue
 
 * [Release Notes](README.md)
 * [Upgrade Guide](prologue/upgrade-guide/README.md)
