@@ -1,8 +1,10 @@
 # Table of contents
 
+* [Introduction](README.md)
+
 ## ⏮ Prologue
 
-* [Release Notes](README.md)
+* [Release Notes](<README (1).md>)
 * [Upgrade Guide](prologue/upgrade-guide/README.md)
   * [Upgrading to v5 from 4.x](prologue/upgrade-guide/upgrading-to-v5-from-4.x.md)
   * [Upgrading to v4 from 3.x](prologue/upgrade-guide/upgrading-to-v4-from-3.x.md)
@@ -12,7 +14,6 @@
 
 ## 🔑 Getting Started
 
-* [Introduction](getting-started/readme.md)
 * [Installation](getting-started/installation.md)
 * [Configuration](getting-started/configuration.md)
 * [Customization](getting-started/customization/README.md)
