@@ -1,7 +1,9 @@
 # Installation
 
-{% hint style="danger" %}
-Socialstream should only be installed into **NEW** Laravel applications. Installing Socialstream into existing applications may have undesired consequences and, in some circumstances, can break your application.
+{% hint style="warning" %}
+Socialstream is primarily intended to be used within **NEW** Laravel applications with either Laravel Jetstream, Laravel Breeze, or Filament Admin Panels.
+
+If you don't require any of these starter-kits, you may [install Socialstream as a standalone package](../guides/standalone-installation.md).&#x20;
 {% endhint %}
 
 You may install Socialstream into your project via composer:
@@ -11,7 +13,7 @@ composer create-project laravel/laravel example-app
 
 cd example-app
 
-composer require laravel/jetstream
+composer require joelbutcher/socialstream
 ```
 
 After installing Socialstream, you may execute the `socialstream:install` Artisan command. This command will guide you through various stacks and options to configure the installation according to your application's requirements.

@@ -34,6 +34,9 @@
 
 ## 🧾 guides
 
+* [Standalone Installation](guides/standalone-installation.md)
+* [Filament with Jetstream](guides/filament-with-jetstream.md)
+* [Filament with Breeze](guides/filament-with-breeze.md)
 * [Laravel Passport](guides/laravel-passport.md)
 * [Socialite Providers](guides/socialite-providers.md)
 
