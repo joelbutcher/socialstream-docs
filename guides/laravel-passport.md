@@ -14,7 +14,7 @@ This is because Socialstream registers routes using the `oauth/{provider}` struc
 
 Alternatively, if you wish to keep the prefix Socialstream uses, you may alter add prefix to Passport's routes by editing the Passport config file. If you haven't already, publish Passport's config file:
 
-```php
+```sh
 php artisan vendor:publish --tag=passport-config
 ```
 
