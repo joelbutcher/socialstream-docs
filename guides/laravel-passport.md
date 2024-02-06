@@ -12,10 +12,23 @@ This is because Socialstream registers routes using the `oauth/{provider}` struc
 'prefix' => 'auth',
 ```
 
-Alternatively, if you wish to keep the prefix Socialstream uses, you may alter add prefix to Passport's routes by adding the following to the `boot` method of your applications `AuthServiceProvider.php` file:
+Alternatively, if you wish to keep the prefix Socialstream uses, you may alter add prefix to Passport's routes by editing the Passport config file. If you haven't already, publish Passport's config file:
+
+```sh
+php artisan vendor:publish --tag=passport-config
+```
+
+ Add the following to `config/passport.php`:
 
 ```php
-Passport::routes([
-    'prefix' => 'passport-oauth',
-]);
+    /*
+    |--------------------------------------------------------------------------
+    | Path prefix
+    |--------------------------------------------------------------------------
+    |
+    | Default is 'oauth'.
+    |
+    */
+
+    'path' => 'passport-oauth',
 ```
