@@ -43,7 +43,5 @@ class ResolveSocialiteUser implements ResolvesSocialiteUsers
 To turn on this feature add the following to applications `socialstream.php` config file:
 
 ```php
-'features' => [
-    Features::generateMissingEmails(),
-],
+Features::generateMissingEmails(),
 ```

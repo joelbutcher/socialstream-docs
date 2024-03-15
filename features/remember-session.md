@@ -17,7 +17,5 @@ if (Auth::viaRemember()) {
 To turn on this feature add the following to applications `socialstream.php` config file:
 
 ```php
-'features' => [
-    Features::rememberSession(),
-],
+Features::rememberSession()
 ```

@@ -9,12 +9,7 @@ This may slow down your application depending on any delays in the request to th
 This feature is enabled by default, to disable this feature, simply remove it from the `features` array inside your `socialstream.php` config file:
 
 ```php
-return [
-    'features' => [
-        // ...
-        Features::refreshOauthTokens(),
-    ],
-];
+Features::refreshOauthTokens()
 ```
 
 You may wish to customise the logic behind refreshing an expired token, to do this, you can provide a closure to the `Socialstream::refreshesTokensForProviderUsing()` method from within the `boot` method of your applications `AppServiceProvider`. For example, for GitHub, this would look like the following:

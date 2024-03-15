@@ -2,10 +2,11 @@
 
 * [Introduction](README.md)
 
-## ⏮ Prologue
+## ⏮️ Prologue
 
 * [Release Notes](<README (1).md>)
 * [Upgrade Guide](prologue/upgrade-guide/README.md)
+  * [Upgrading to v6 from 5.x](prologue/upgrade-guide/upgrading-to-v6-from-5.x.md)
   * [Upgrading to v5 from 4.x](prologue/upgrade-guide/upgrading-to-v5-from-4.x.md)
   * [Upgrading to v4 from 3.x](prologue/upgrade-guide/upgrading-to-v4-from-3.x.md)
   * [Upgrading to v3 from 2.x](prologue/upgrade-guide/upgrading-to-v3-from-2.x.md)
@@ -28,9 +29,11 @@
 * [Remember Session](features/remember-session.md)
 * [Refresh Expired Tokens](features/refresh-expired-tokens.md)
 * [Provider Avatars](features/provider-avatars.md)
+* [Global Login](features/global-login.md)
 * [Register from Login](features/register-from-login.md)
-* [Login on Registration](features/login-on-registration.md)
 * [Missing Emails](features/missing-emails.md)
+* [Auth Existing Unlinked Users](features/auth-existing-unlinked-users.md)
+* [Login on Registration (deprecated)](features/login-on-registration.md)
 
 ## 🧾 guides
 

@@ -5,7 +5,5 @@ This feature enables the capability to register a new user when a user attempts 
 To turn on this feature add the following to applications `socialstream.php` config file:
 
 ```php
-'features' => [
-    Features::createAccountOnFirstLogin(),
-],
+Features::createAccountOnFirstLogin()
 ```
