@@ -42,6 +42,7 @@
 * [Filament with Breeze](guides/filament-with-breeze.md)
 * [Laravel Passport](guides/laravel-passport.md)
 * [Socialite Providers](guides/socialite-providers.md)
+* [Overriding Fortify's Authentication](guides/overriding-fortifys-authentication.md)
 
 ## 🔗 Links
 
