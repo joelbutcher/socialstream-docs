@@ -50,11 +50,9 @@ Icon location: `resources/js/Components/SocialstreamIcons/`
 
 ### Socialstream Providers
 
-Inside your applications `socialstream.php` config file, you will want to add the string representation of the SocialiteProvider you are adding support for. For example, if you are adding Sign in With Apple support, you would add the string `'apple'` to the `providers` array:
+Inside your applications `socialstream.php` config file, you will want to add the string representation of the SocialiteProvider you are adding support for. For example, if you are adding Sign in With Apple support, you would add the string `'apple'` to the `providers` array in `config/socialstream.php`
 
-```
-// ./config/socialstream.php
-
+```php
 'providers' => [
     \JoelButcher\Socialstream\Providers::github(),
     \JoelButcher\Socialstream\Providers::google(),
@@ -66,22 +64,67 @@ Inside your applications `socialstream.php` config file, you will want to add th
 ],
 ```
 
-### Service Providers
+### Service Provider
 
-When using Socialstream alongside Socialite Providers, you will need **both** service providers adding your the `providers` array in you application's `app.php` config file:
+#### Laravel 11+
+
+In `bootstrap/providers.php`.
+
+```php
+return [
+    // a whole bunch of providers
+    // remove 'Laravel\Socialite\SocialiteServiceProvider',
+    \SocialiteProviders\Manager\ServiceProvider::class, // add
+];
+```
+
+#### In Laravel 10 or Below
+
+In `config\app.php`.
 
 ```php
 'providers' => [
-    // ...
-    \App\Providers\SocialstreamServiceProvider::class, // keep
-    // ...
-
-    // ...    
-    // remove 'Laravel\Socialite\SocialiteServiceProvider::class',
+    // a whole bunch of providers
+    // remove 'Laravel\Socialite\SocialiteServiceProvider',
     \SocialiteProviders\Manager\ServiceProvider::class, // add
-    // ...
 ];
 ```
+
+### Add provider event listener
+
+#### Laravel 11+
+
+In Laravel 11, the default `EventServiceProvider` provider was removed. Instead, add the listener using the `listen` method on the `Event` facade, in your `AppServiceProvider` `boot` method.
+
+* Note: You do not need to add anything for the built-in socialite providers unless you override them with your own providers.
+
+```php
+Event::listen(function (\SocialiteProviders\Manager\SocialiteWasCalled $event) {
+    $event->extendSocialite('microsoft', \SocialiteProviders\Microsoft\Provider::class);
+});
+```
+
+<details>
+
+<summary>Laravel 10 or below</summary>
+
+Configure the package's listener to listen for `SocialiteWasCalled` events.
+
+Add the event to your `listen[]` array in `app/Providers/EventServiceProvider`. See the [Base Installation Guide](https://socialiteproviders.com/usage/) for detailed instructions.
+
+```php
+protected $listen = [
+    \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+        // ... other providers
+        \SocialiteProviders\Microsoft\MicrosoftExtendSocialite::class.'@handle',
+    ],
+];
+```
+
+\
+
+
+</details>
 
 ### Database Changes – `token`
 
